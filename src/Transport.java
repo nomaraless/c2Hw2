@@ -1,4 +1,4 @@
-abstract class Transport{
+abstract class Transport implements ServiceStationInterface {
     private String modelName;
     private int wheelsCount;
 
@@ -10,7 +10,7 @@ abstract class Transport{
         return modelName;
     }
 
-    public  void setModelName(String modelName) {
+    public void setModelName(String modelName) {
         this.modelName = modelName;
     }
 
@@ -25,5 +25,12 @@ abstract class Transport{
     public Transport(String modelName, int wheelsCount) {
         this.modelName = modelName;
         this.wheelsCount = wheelsCount;
+    }
+
+    @Override
+    public void service() {
+        for (int i = 0; i < wheelsCount; i++) {
+            updateTyre();
+        }
     }
 }
